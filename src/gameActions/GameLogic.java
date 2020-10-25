@@ -455,12 +455,12 @@ public class GameLogic
 			DODServer.Username(id);
 			return "Usernames found";
 		}
-		else if(input.equals("JOINGAME"))
-		{
-//			System.out.println(input);
-			DODServer.showGames(id);
-			return "Games Found";
-		}		
+//		else if(input.equals("SHOW GAMES"))
+//		{
+////			System.out.println(input);
+//			DODServer.showGames(id);
+//			return "Games Found";
+//		}		
 		else
 		{
 			String[] splitInput=input.trim().split(" ");					//split the string when ever the is space

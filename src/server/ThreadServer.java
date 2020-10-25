@@ -4,7 +4,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Set;
 
 import gameActions.GameLogic;
 
@@ -22,6 +24,7 @@ public class ThreadServer extends Thread{
 	public int id;
 	private PrintWriter out;
 	public  int rand_int1;
+	
 
 	/**
 	 * assigns values to global variables
@@ -46,7 +49,7 @@ public class ThreadServer extends Thread{
 	}
 	public void sendGames(String allgames){
 		out.println(allgames);
-		System.out.println("ThreadServer send games"+allgames);
+		System.out.println("ThreadServer send games to client "+allgames);
 	}
 
 	
@@ -104,146 +107,105 @@ public class ThreadServer extends Thread{
 			System.out.println(username+" has connected");
 			DODServer.setClientUsername(this.id,username);
 			
+//			String activeGames=in.readLine();
+			System.out.println("Getting Active games...");
+			DODServer.showGames(id);
+			
 			
 ////------------server receives if player creates game or joins game--------------------
+			GameLogic gameLogic;
 			Random rand = new Random();
-//	        int rand_int1;
 			
-			String createOrJoin=in.readLine();
+			String createOrJoin = in.readLine();
 			if(createOrJoin.equals("CreateGame")) {
-				System.out.println("BBBBBBBBBBBBBB");
-				///create new GameLogic as it is a new game
+				System.out.println("Creating Game");
 				rand_int1= rand.nextInt(1000000);
-				GameLogic gameLogic = new GameLogic();
+				gameLogic = new GameLogic();
 				DODServer.games.put(rand_int1,gameLogic);
 				System.out.println("New Game was created and the host is "+username);
 				gameLogic.addPlayer(id,playerOrBot);
-			
-			
-				String command;
-				while((command=in.readLine())!=null)
-				{
-
-//					System.out.println("Clients next Command is: "+ command);
-					String message;
-	/////--------------get game Logic of the specific game using ID of game from above------------				
-					String action=gameLogic.processCommand(id,command);
-					String[] comm=command.split(" ");
-					if(command.equals("PICKUP"))
-					{
-						out.println(action);
-						message= "Success "+ command;
-						System.out.println("PickUP gold =: " + action);
-
-						
-					}
-					if(command.equals("QUIT")) {
-						for(int i=0;i<DODServer.threadList.size();i++) {
-							if(DODServer.threadList.get(i).id == id) {
-								DODServer.threadList.remove(i);
-							}
-						}
-					}
-					if(DODServer.games.get(rand_int1).playerWins(id)==true)
-					{
-						out.println("Player with username: "+username+" wins");
-						System.out.println("Player with username wins: " + username );
-						System.exit(0);
-					}
-
-					else
-					{
-//						System.out.println("HELLOO U STUPUD FUCK");
-						out.println(action);
-						message= "Success "+ command;
-//						System.out.println("FUCKME ACTION "+action);
-					}
-
-				}
-
 			}
+//			(createOrJoin.equals("JoinGame")) 
 			else {
-//				System.out.println("ThreadServer received");
-//				DODServer.showGames(id);
-//				System.out.println("ThreadServer games sent toclient");
-				///joins game with specific id
-				//sent this>>>>????URGENT?/////
-//				rand_int1= Integer.parseInt(in.readLine());
-//				GameLogic gameLogic = DODServer.games.get(rand_int1);
-//				gameLogic.addPlayer(id,playerOrBot);
-//				String[] gameSelected= in.readLine().split(" ");
-//				rand_int1=Integer.parseInt(gameSelected[1]);
-//				GameLogic gameLogic = DODServer.games.get(rand_int1);
-//				gameLogic.addPlayer(id,playerOrBot);
+				String[] splitInput=createOrJoin.trim().split(" ");
 				
-//				System.out.println("Player Joins Game: " +username+" "+rand_int1);
-				
-				String[] com;
-				String command;
-				GameLogic gameLogic = null;
-				String message;
-				
-				while((com=in.readLine().split(" "))!=null)
-				{
-					command=com[0];
-					String action="";
-					if(command.equals("JoinGame")) {
-						DODServer.showGames(id);
-						System.out.println("THREAD SERVER SHOWING GAMES");
-					}
-					else if(command.equals("Selecting")) {
-						rand_int1 = Integer.parseInt(com[1]);
-						gameLogic = DODServer.games.get(rand_int1);
-						
+////-------------RANDOM GAME SELECTIOM--------------------------------------				
+				Set<Integer> keySet = DODServer.games.keySet();
+				ArrayList<Integer> keyList = new ArrayList<>(keySet);
+				int size = keyList.size();
+			    rand_int1 = rand.nextInt(size);
+			    int randomKey= keyList.get(rand_int1);
+//			    gameLogic = DODServer.games.get(randomKey);
+/////------------PLAYER SELECTION OF GAME TO JOIN----------------------
+//			    Set<Integer> keySet = DODServer.games.keySet();
+//				ArrayList<Integer> keyList = new ArrayList<>(keySet);
+				if(splitInput.length >1) {
+					int gameId= Integer.parseInt(splitInput[1]);;
+					if(keyList.contains(gameId)) {
+						gameId= Integer.parseInt(splitInput[1]);
+						gameLogic = DODServer.games.get(gameId);
 						System.out.println("THREAD SERVER Player JOINED THE GAME");
+						gameLogic.addPlayer(id, playerOrBot);
 					}
-
-//					System.out.println("Clients next Command is: "+ command);
-					
-	/////--------------get game Logic of the specific game using ID of game from above------------				
 					else {
-						action=gameLogic.processCommand(id,command);
-						
-//						System.out.println(action);
-
-						if(command.equals("PICKUP"))
-						{
-							out.println(action);
-							message= "Success "+ command;
-							System.out.println("PickUP gold = " + action);
-
-							
-						}
-						if(command.equals("QUIT")) {
-							for(int i=0;i<DODServer.threadList.size();i++) {
-								if(DODServer.threadList.get(i).id == id) {
-									DODServer.threadList.remove(i);
-								}
-							}
-						}
-						if(DODServer.games.get(rand_int1).playerWins(id)==true)
-						{
-							out.println("Player with username: "+username+" wins");
-							System.out.println("Player with username wins: " + username );
-							System.exit(0);
-						}
-
-						else
-						{
-//							System.out.println("HELLOO U STUPUD FUCK");
-							out.println(action);
-							System.out.println("FUCKME ACTION "+action);
-							message= "Success "+ command;
-							
-						}
+						System.err.println("TJREAD SERVER THIS GAME DOESNT EXIST");
+						gameLogic = DODServer.games.get(randomKey);
+						System.out.println("THREAD SERVER Player JOINED random GAME");
+						gameLogic.addPlayer(id, playerOrBot);
 					}
-
-
 				}
+				else {
+					System.err.println("TJREAD SERVER THIS GAME DOESNT EXIST");
+					gameLogic = DODServer.games.get(randomKey);
+					System.out.println("THREAD SERVER Player JOINED random GAME");
+					gameLogic.addPlayer(id, playerOrBot);
+				}
+			    
 
 			}
+//			else {
+//				System.out.println("Unrecognised Inpute");
+//			}
 			
-//			gameLogic.addPlayer(id,playerOrBot);						// adds the player in the map
+			
+			
+			String command="";
+			while((command=in.readLine())!=null) {
+				String message;
+				/////--------------get game Logic of the specific game using ID of game from above------------				
+//				System.out.println("AAAAAAAAAAAAAAA"+command);
+				String action=gameLogic.processCommand(id,command);
+				if(command.equals("PICKUP"))
+				{
+					out.println(action);
+					message= "Success "+ command;
+					System.out.println("PickUP gold =: " + action);
+
+					
+				}
+				if(command.equals("QUIT")) {
+					for(int i=0;i<DODServer.threadList.size();i++) {
+						if(DODServer.threadList.get(i).id == id) {
+							DODServer.threadList.remove(i);
+						}
+					}
+				}
+				if(gameLogic.playerWins(id)==true)
+				{
+					out.println("Player with username: "+username+" wins");
+					System.out.println("Player with username wins: " + username );
+					System.exit(0);
+				}
+
+				else
+				{
+//									System.out.println("HELLOO U STUPUD FUCK");
+					out.println(action);
+					message= "Success "+ command;
+//									System.out.println("FUCKME ACTION "+action);
+				}				
+			}
+			
 
 ////----------------------Server receives first actual command---------------------------
 			

@@ -52,7 +52,7 @@ public class HumanClient {
 	private static ImageIcon exitIcon;
 	private static JTextArea outputText;
 	private static JComboBox combo1;
-	private static JComboBox combo2;
+	private JComboBox combo2 =new JComboBox();;
 	JPopupMenu popup;
 	
 	private Run myRun;	
@@ -103,14 +103,16 @@ public class HumanClient {
 //		}
 	}
 	
-	@SuppressWarnings("unchecked")
-	public void addToJoinGame(ArrayList<String> message) {
-//		String[] splitInput=message.trim().split(" ");
+
+	public void addToJoinGame(String message) {
+		String[] splitInput=message.trim().split(" ");
 		System.out.println("Human Client FUCK ME");
 		String newMessage="";
-		for(int i=0; i<message.size();i++) {
-			newMessage=message.get(i);
+		combo2.removeAllItems();
+		for(int i=0; i<splitInput.length;i++) {
+			newMessage=splitInput[i];
 			combo2.addItem(newMessage) ;
+			System.out.println("Human Client add to join game"+newMessage);
 		}
 		System.out.println("Human Client FUCK ME 2");
 	}
@@ -223,7 +225,14 @@ public class HumanClient {
 
 		new lookThread(myRun).start();
 	}
+	private void startShowingGames(){
 
+		new ShowGamesThread(myRun).start();
+	}
+	private void stopShowingGames(){
+
+		new ShowGamesThread(myRun).stop();
+	}
 	//	private void startGeneratingUsernames(){
 	//
 	//		new usernameThread(myRun).start();
@@ -279,7 +288,8 @@ public class HumanClient {
 		});
 		
 		JButton joinGame = new JButton("Join Game");
-		combo2 = new JComboBox();
+//		combo2 = new JComboBox();
+//		combo2.addItem("HEY");
 		joinGame.setPreferredSize(new Dimension(100,100));
 		midPanelC.add(joinGame);
 		midPanelC.add(combo2);
@@ -287,11 +297,19 @@ public class HumanClient {
 //		popup = new JPopupMenu();
 		joinGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				combo2.removeAllItems();
+//				combo2.removeAllItems();
 				topPanel.setToolTipText("");
 				System.out.println("HumanClient "+"JoinGame2");
-//				myRun.sendToServer("JoinGame");
-
+//				String gameSelection = "000123";
+				System.out.println("jComboBox1 : " + combo2);                   
+				
+				String gameSelection= combo2.getSelectedItem().toString();
+				System.out.println("support : " + gameSelection);
+				
+				myRun.sendToServer("JoinGame "+gameSelection);///////////THIS IS THE PROBLEM
+				frame.setVisible(false);
+				iniGui();
+				startLooking();
 			}
 		});
 		
@@ -303,8 +321,10 @@ public class HumanClient {
 				String gameSelection = combo2.getSelectedItem().toString();	
 				myRun.sendToServer("Selecting"+" "+gameSelection);
 				frame.setVisible(false);
+//				stopShowingGames();
 				iniGui();
 				startLooking();
+				
 
 			}
 		});
@@ -371,6 +391,9 @@ public class HumanClient {
 				myRun.sendToServer(userName.getText());
 				frame.setVisible(false);
 				createGameFrame();
+//				myRun.sendToServer("Games");
+//				startShowingGames();
+				
 			
 			}
 		});

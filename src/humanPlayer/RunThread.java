@@ -80,26 +80,25 @@ public class RunThread extends Thread{
 				}
 				if(as[0].equals("GamesAll"))
 				{
-					System.out.println("RunThread All games");
-					ArrayList<String> str = new ArrayList<String>();
-					if(as.length<=1) {
-						str.add("No Games Exist");
-						System.out.println("No game exists");
-					}
-					else {
-						for(int i=1;i<as.length;i++)
-						{
-							str.add(as[i]);
-//							System.out.println(as[i]);
-//							humanClient.appendToTextArea(as[i]+ "\n");
-							
-						}
-						System.out.println("runThread Games exists");
-					}
+					System.out.println("RunThread All games received");
+//					ArrayList<String> str = new ArrayList<String>();
+//					if(as.length<=1) {
+//						str.add("No Games Exist");
+//						System.out.println("No game exists");
+//					}
+//					else {
+//						for(int i=1;i<as.length;i++)
+//						{
+//							str.add(as[i]);
+//						}
+//						System.out.println("runThread Games exists");
+					System.out.println("RUNTHREAD "+as[0]);
+					humanClient.addToJoinGame(output);
+//					}
 					System.out.println("runThread gameAdded");
-					humanClient.addToJoinGame(str);
+//					humanClient.addToJoinGame(str);
 				}
-				if(!as[0].equals("LOOK"))
+				if((!as[0].equals("LOOK")) && (!as[0].equals("GamesAll")))
 				{
 					humanClient.appendToTextArea(output+ "\n");
 				}

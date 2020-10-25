@@ -30,7 +30,7 @@ public class lookThread extends Thread{
 				Thread.sleep(100);
 			}
 			catch(Exception e){
-
+				System.out.println("Look THREAD couldnt sleep");
 			}
 		}
 	}

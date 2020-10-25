@@ -108,7 +108,7 @@ public class DODServer {
 				threadList.get(i).sendGames(allGames);
 			}
 		}
-		System.out.println("DODServer string of names created");
+//		System.out.println("DODServer string of names created");
 //		return allUsernames;	
 	}
 	
