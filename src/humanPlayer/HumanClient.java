@@ -223,22 +223,32 @@ public class HumanClient {
 
 		new lookThread(myRun).start();
 	}
-	private void startShowingGames(){
-
-		new ShowGamesThread(myRun).start();
-	}
-	private void stopShowingGames(){
-
-		new ShowGamesThread(myRun).stop();
-	}
-	//	private void startGeneratingUsernames(){
-	//
-	//		new usernameThread(myRun).start();
-	//	}
 
 	public void createGameFrame() {
 		JFrame frame = new JFrame("Front Page");
 		frame.setPreferredSize(new Dimension(1000,500));
+		
+		Action ca = new AbstractAction()
+		{
+		    /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent e)
+		    {
+		        JFrame frame = (JFrame)e.getSource();
+		        myRun.sendToServer("QUIT");
+		    }
+		};
+		 
+		CloseListener cl = new CloseListener(
+				"Are you sure you want to exit the application",
+			    "Exit Application",
+			    ca
+				);	
+		frame.addWindowListener( cl );
+		
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setVisible(true);
@@ -262,14 +272,9 @@ public class HumanClient {
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setBackground(Color.YELLOW);
 
-		// add panel to frame
+
 		frame.getContentPane().add(midPanelC, BorderLayout.CENTER);
-//		frame.getContentPane().add(midPanelL, BorderLayout.LINE_START);
-//		frame.getContentPane().add(midPanelR, BorderLayout.LINE_END);
-//		frame.getContentPane().add(bottomPanel, BorderLayout.PAGE_END);
-		
-		
-		
+
 		JButton startGame = new JButton("Create Game");
 		startGame.setPreferredSize(new Dimension(100,100));
 		midPanelC.add(startGame);
@@ -311,37 +316,32 @@ public class HumanClient {
 			}
 		});
 		
-		JButton acceptGame = new JButton("Enter the dungeon");
-		midPanelC.add(acceptGame);
-		acceptGame.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				topPanel.setToolTipText("");
-				String gameSelection = combo2.getSelectedItem().toString();	
-				myRun.sendToServer("Selecting"+" "+gameSelection);
-				frame.setVisible(false);
-//				stopShowingGames();
-				iniGui();
-				startLooking();
-				
 
-			}
-		});
-
-		
-
-
-		
-//		joinGame.addMouseListener(new MouseAdapter() {
-//	            public void mousePressed(MouseEvent e) {
-//	                popup.show(e.getComponent(), e.getX(), e.getY());
-//	            }
-//	        });
-		
 		frame.pack();
 	}
 	private void displayUsernameFrame() {
 		JFrame frame = new JFrame("Front Page");
 		frame.setPreferredSize(new Dimension(1300, 800));
+		Action ca = new AbstractAction()
+		{
+		    /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent e)
+		    {
+		        JFrame frame = (JFrame)e.getSource();
+		        myRun.sendToServer("QUIT");
+		    }
+		};
+		 
+		CloseListener cl = new CloseListener(
+				"Are you sure you want to exit the application",
+			    "Exit Application",
+			    ca
+				);	
+		frame.addWindowListener( cl );
 
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
@@ -411,7 +411,12 @@ public class HumanClient {
 //----------------Add confimartion for exit and if do send to server to quit to remove players thread
 		Action ca = new AbstractAction()
 		{
-		    public void actionPerformed(ActionEvent e)
+		    /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent e)
 		    {
 		        JFrame frame = (JFrame)e.getSource();
 		        myRun.sendToServer("QUIT");
@@ -678,34 +683,6 @@ public class HumanClient {
 //				System.out.println(DODServer.threadList.get(1).id);
 			}
 		});
-
-//		bUsername.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//
-//				midPanelC.setToolTipText("");
-//				myRun.sendToServer("1");///Declares that it is a user and not a bot
-//				myRun.sendToServer(InputText.getText());
-//				topPanel.remove(bUsername);
-//				topPanel.remove(InputText);
-//				topPanel.revalidate();
-//				topPanel.repaint();
-//				bMoveN.setEnabled(true);
-//				bMoveW.setEnabled(true);
-//				bMoveE.setEnabled(true);
-//				bMoveS.setEnabled(true);
-//				bHello.setEnabled(true);
-//				bPickUp.setEnabled(true);
-//				bShout.setEnabled(true);
-//				bWhisper.setEnabled(true);
-//				bQuit.setEnabled(true);
-//				chatText.setEnabled(true);
-//
-//				startLooking();
-//				//				startGeneratingUsernames();
-//				frame.getContentPane().remove(topPanel);
-//			}
-//			
-//		});
 		
 		frame.pack();
 		frame.setVisible(true);

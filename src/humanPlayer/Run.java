@@ -29,7 +29,7 @@ public class Run{
 	//output stream
 	private PrintWriter out;
 	private String portNumber ="4000";
-	private String ip="18.134.172.246";
+	private String ip="localhost";
 //	18.134.172.246
 	/**
 	 * constructor of class creates and new serverhost instance.

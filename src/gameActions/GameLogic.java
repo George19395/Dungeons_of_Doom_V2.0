@@ -71,8 +71,9 @@ public class GameLogic
 ///---------------------------------	-------------------------------------------------------------------------------
 	public GameLogic(){
 		map=new Map();			
-		map.readMap("/home/ubuntu/DOD_Server/example_map.txt");		// call the function read map from map and read the file
-//		this.botMemory=botMemory;
+		map.readMap("example_map.txt");		// call the function read map from map and read the file
+///-----/home/ubuntu/DOD_Server/example_map.txt when using for actual server
+		//		this.botMemory=botMemory;
 	}	
 //	public static void main(String[] args) {
 //		GameLogic gamelogic = new GameLogic();
