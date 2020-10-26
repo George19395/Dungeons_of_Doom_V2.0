@@ -92,7 +92,8 @@ public class HumanClient {
 //		String[] splitInput=message.trim().split(" ");
 		
 		for(int i=0; i<message.size();i++) {
-			combo1.addItem(message.get(i));
+			combo1.addItem(message.get(i).toString());
+			
 		}
 //		combo1.addItem(message.toArray());
 //		for(int i =0; i<splitInput.length-1;i++) {
@@ -577,7 +578,8 @@ public class HumanClient {
 		JButton showUsernames = new JButton("ShowUsernames");
 		panel4.add(showUsernames,BorderLayout.LINE_END);
 		combo1 = new JComboBox();
-//		combo1.add("asdasd");
+//		combo1.addItem("asdasd");
+//		combo1.addItem("asdasd");
 		panel4.add(combo1,BorderLayout.WEST);
 
 		outputText= new JTextArea(40,40);
@@ -589,7 +591,7 @@ public class HumanClient {
 
 		panel2.add(scroll1);
 		
-		chatText.setEnabled(false);
+		chatText.setEnabled(true);
 
 		
 		
