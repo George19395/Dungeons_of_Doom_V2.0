@@ -91,14 +91,24 @@ public class DODServer {
 		}
 	
 //		ArrayList<Integer>allUsernames= new ArrayList<Integer>();
-		String allUsernames="Usernames"+" ";
+		ArrayList<Integer> users=new ArrayList<Integer>();
 		for ( Integer[] key : gamesAndId) {
-		    System.out.println( key );
+//		    System.out.println( key );
 		    if(key[1]==gameIdOfPlayer) {
-		    	allUsernames+= key[0]+" ";
+		    	users.add(key[0]);
 //		    	allUsernames.add(key[0]);
 		    }
 
+		}
+		
+		String allUsernames="Usernames"+" ";
+		for (int i=0; i<usernameList.size(); i++){
+			for(int user:users) {
+				if (Integer.parseInt(usernameList.get(i)[0])==user){
+					allUsernames+=usernameList.get(i)[1];
+				}
+			}
+			
 		}
 		
 		
