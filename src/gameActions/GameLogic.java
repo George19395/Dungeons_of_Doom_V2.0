@@ -454,7 +454,8 @@ public class GameLogic
 		{
 //			System.out.println(input);
 			DODServer.Username(id);
-			return "Usernames found";
+//			return "Usernames found";
+			return "Usernames";
 		}
 //		else if(input.equals("SHOW GAMES"))
 //		{

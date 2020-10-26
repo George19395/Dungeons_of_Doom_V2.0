@@ -88,11 +88,12 @@ public class HumanClient {
 	 * 
 	 */
 ////////----THIS ADDS TOO MANY USERNAMES WHEN you press button again even when i clearALL.
-	public void addToComboBox(ArrayList<String> message) {
+	public void addToComboBox(ArrayList<String> messages) {
 //		String[] splitInput=message.trim().split(" ");
 		
-		for(int i=0; i<message.size();i++) {
-			combo1.addItem(message.get(i).toString());
+		for(int i=0; i<messages.size();i++) {
+			System.out.println(messages.size());
+			combo1.addItem(messages.get(i).toString());
 			
 		}
 //		combo1.addItem(message.toArray());

@@ -105,12 +105,14 @@ public class DODServer {
 		for (int i=0; i<usernameList.size(); i++){
 			for(int user:users) {
 				if (Integer.parseInt(usernameList.get(i)[0])==user){
-					allUsernames+=usernameList.get(i)[1];
+					allUsernames+=usernameList.get(i)[1]+" ";
+//					break;
 				}
+				
 			}
 			
 		}
-		
+		System.out.println(allUsernames);
 		
 //		String allUsernames="Usernames"+" ";
 //		for(int i=0; i<threadList.size();i++)
