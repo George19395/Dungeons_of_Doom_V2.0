@@ -33,7 +33,6 @@ public class ThreadServer extends Thread{
 	public ThreadServer(Socket socket, int id){
 		super("ThreadServer");
 		this.socket=socket;
-//		this.gameLogic=gameLogic;
 		this.id=id;
 	}
 
@@ -67,19 +66,21 @@ public class ThreadServer extends Thread{
 		System.out.println(command);
 		out.println(command);
 	}
-	public String generateGameNumber() {
-		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        StringBuilder salt = new StringBuilder();
-        Random rnd = new Random();
-        while (salt.length() < 6) { // length of the random string.
-            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-            salt.append(SALTCHARS.charAt(index));
-        }
-        String saltStr = salt.toString();
-        return saltStr;
-		
-	}
 
+////------YOU CAN USE THIS LATER ON FOR GAME GENERATION NUMBERS-----------------	
+//	public String generateGameNumber() {
+//		String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+//        StringBuilder salt = new StringBuilder();
+//        Random rnd = new Random();
+//        while (salt.length() < 6) { // length of the random string.
+//            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+//            salt.append(SALTCHARS.charAt(index));
+//        }
+//        String saltStr = salt.toString();
+//        return saltStr;
+//		
+//	}
+/////------------------------------------------------------------------------------------------
 
 	/**
 	 *runs the thread
@@ -187,6 +188,7 @@ public class ThreadServer extends Thread{
 					for(int i=0;i<DODServer.threadList.size();i++) {
 						if(DODServer.threadList.get(i).id == id) {
 							DODServer.threadList.remove(i);
+//							gameLogic.removePlayer(id);
 						}
 					}
 				}

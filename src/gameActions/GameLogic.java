@@ -118,7 +118,7 @@ public class GameLogic
 		}
 		System.err.println("id: "+id);
 		System.err.println("size: "+players.size());
-		System.err.println("first id: "+players.get(0)[4]);
+//		System.err.println("first id: "+players.get(0)[4]);
 		throw new RuntimeException("id not found");
 	}
 
@@ -508,6 +508,7 @@ public class GameLogic
 	 */
 	public String playerQuit(int id)
 	{
+		removePlayer(id);
 		return "Disconnect";
 	}
 
