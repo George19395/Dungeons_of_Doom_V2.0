@@ -125,6 +125,9 @@ public class ThreadServer extends Thread{
 				DODServer.games.put(rand_int1,gameLogic);
 				System.out.println("New Game was created and the host is "+username);
 				gameLogic.addPlayer(id,playerOrBot);
+				DODServer.gamesAndId.add(new Integer[]{
+						new Integer(this.id),
+						new Integer(rand_int1)});
 			}
 //			(createOrJoin.equals("JoinGame")) 
 			else {
@@ -147,12 +150,18 @@ public class ThreadServer extends Thread{
 						gameLogic = DODServer.games.get(gameId);
 						System.out.println("THREAD SERVER Player JOINED THE GAME");
 						gameLogic.addPlayer(id, playerOrBot);
+						DODServer.gamesAndId.add(new Integer[]{
+								new Integer(this.id),
+								new Integer(gameId)});
 					}
 					else {
 						System.err.println("TJREAD SERVER THIS GAME DOESNT EXIST");
 						gameLogic = DODServer.games.get(randomKey);
 						System.out.println("THREAD SERVER Player JOINED random GAME");
 						gameLogic.addPlayer(id, playerOrBot);
+						DODServer.gamesAndId.add(new Integer[]{
+								new Integer(this.id),
+								new Integer(randomKey)});
 					}
 				}
 				else {
@@ -160,10 +169,15 @@ public class ThreadServer extends Thread{
 					gameLogic = DODServer.games.get(randomKey);
 					System.out.println("THREAD SERVER Player JOINED random GAME");
 					gameLogic.addPlayer(id, playerOrBot);
+					DODServer.gamesAndId.add(new Integer[]{
+							new Integer(this.id),
+							new Integer(randomKey)});
 				}
 			    
 
 			}
+
+
 //			else {
 //				System.out.println("Unrecognised Inpute");
 //			}

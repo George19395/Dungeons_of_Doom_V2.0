@@ -54,7 +54,7 @@ public class DODServer {
 	public static ArrayList<ThreadServer> threadList = new ArrayList<ThreadServer>(); 	// creates the threadserver array list
 	private static ArrayList<String[]> usernameList = new ArrayList<>();				// creates array list which holds all the usernames of the users
 	public static HashMap<Integer,GameLogic> games = new HashMap<Integer, GameLogic>();
-	
+	public static ArrayList<Integer[]> gamesAndId= new ArrayList<>(); //[0]=id [1]=gameId
 //	private static BotMemory botMemory;
 
 	private static JTextArea textArea;
@@ -76,11 +76,37 @@ public class DODServer {
 	 */
 	public static void Username(int id)
 	{
-		String allUsernames="Usernames"+" ";
-		for(int i=0; i<threadList.size();i++)
-		{
-			allUsernames+= threadList.get(i).id+" ";
+//i need the hashmap to include the ID as well in order to find users in same
+// Game and filter them out.
+		GameLogic gameLogic;
+		int gameIdOfPlayer = 0;
+		for (int i=0; i<threadList.size(); i++){
+			if ((threadList.get(i).id)==id){
+				for(int j=0;j<gamesAndId.size();j++) {
+					if(id==(gamesAndId.get(j)[0])) {
+						gameIdOfPlayer=gamesAndId.get(j)[1];
+					}
+				}
+			}
 		}
+	
+//		ArrayList<Integer>allUsernames= new ArrayList<Integer>();
+		String allUsernames="Usernames"+" ";
+		for ( Integer[] key : gamesAndId) {
+		    System.out.println( key );
+		    if(key[1]==gameIdOfPlayer) {
+		    	allUsernames+= key[0]+" ";
+//		    	allUsernames.add(key[0]);
+		    }
+
+		}
+		
+		
+//		String allUsernames="Usernames"+" ";
+//		for(int i=0; i<threadList.size();i++)
+//		{
+//			allUsernames+= threadList.get(i).id+" ";
+//		}
 
 		for (int i=0; i<threadList.size(); i++){
 			if ((threadList.get(i).id)==id){
@@ -185,6 +211,7 @@ public class DODServer {
 //				threadList.get(idNow).start();										//starts the thread
 //--------------TEMPORARY SOLUTION FIX THIS-----------------------
 				threadList.get(threadList.size() - 1).start();
+				
 				idNow++;														// increments id so that users have different id's
 			}
 
