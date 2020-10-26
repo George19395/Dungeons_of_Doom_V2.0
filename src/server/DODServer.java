@@ -66,7 +66,7 @@ public class DODServer {
 	
 	public DODServer() {
 		
-		Images();
+//		Images();
 		init() ;
 	}
 	static int idNow=0;

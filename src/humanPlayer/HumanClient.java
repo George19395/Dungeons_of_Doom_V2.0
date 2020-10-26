@@ -9,8 +9,7 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
@@ -21,8 +20,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
@@ -41,6 +38,7 @@ import gameActions.CloseListener;
  */
 public class HumanClient {
 
+	BufferedImage img;
 
 	private static JScrollPane scroll;
 	private static JLabel[] labels= new JLabel[25];
@@ -142,15 +140,15 @@ public class HumanClient {
 	private void Images()
 	{
 
-		java.net.URL humanUrl = HumanClient.class.getResource("/aPlayer.png");
+		java.net.URL humanUrl = HumanClient.class.getResource("/aPlayer.PNG");
 		assert(humanUrl != null);
 		ImageIcon human =new ImageIcon(humanUrl);
 		Image image = human.getImage(); // transform it 
 		Image newimg = image.getScaledInstance(160, 110,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		humanIcon = new ImageIcon(newimg);  // transform it back
+		
 
-
-		java.net.URL floorUrl = HumanClient.class.getResource("/floor.png");
+		java.net.URL floorUrl = HumanClient.class.getResource("/Floor.PNG");
 		assert(floorUrl != null);
 		ImageIcon floor =new ImageIcon(floorUrl);
 		Image image1 = floor.getImage(); // transform it 
@@ -158,7 +156,7 @@ public class HumanClient {
 		floorIcon = new ImageIcon(newimg1);  // transform it back
 		//assert(floor != null);
 
-		java.net.URL goldUrl = HumanClient.class.getResource("/gold.png");
+		java.net.URL goldUrl = HumanClient.class.getResource("/Gold.PNG");
 		assert(goldUrl != null);
 		ImageIcon Gold =new ImageIcon(goldUrl);
 		Image image12 = Gold.getImage(); // transform it 
@@ -166,7 +164,7 @@ public class HumanClient {
 		goldIcon = new ImageIcon(newimg12);  // transform it back
 		
 
-		java.net.URL wallUrl = HumanClient.class.getResource("/wall.png");
+		java.net.URL wallUrl = HumanClient.class.getResource("/Wall.PNG");
 		assert(wallUrl != null);
 		ImageIcon wall =new ImageIcon(wallUrl);
 		Image image123 = wall.getImage(); // transform it 
@@ -174,7 +172,7 @@ public class HumanClient {
 		wallIcon = new ImageIcon(newimg123);  // transform it back
 //		assert(wall != null);
 
-		java.net.URL exitUrl = HumanClient.class.getResource("/exit.png");
+		java.net.URL exitUrl = HumanClient.class.getResource("/Exit.PNG");
 		assert(exitUrl != null);
 		ImageIcon exit =new ImageIcon(exitUrl);
 		Image image1234 = exit.getImage(); // transform it 
