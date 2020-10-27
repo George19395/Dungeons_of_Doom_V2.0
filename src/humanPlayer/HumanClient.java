@@ -146,7 +146,7 @@ public class HumanClient {
 		assert(humanUrl != null);
 		ImageIcon human =new ImageIcon(humanUrl);
 		Image image = human.getImage(); // transform it 
-		Image newimg = image.getScaledInstance(160, 110,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		Image newimg = image.getScaledInstance(920/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		humanIcon = new ImageIcon(newimg);  // transform it back
 		
 
@@ -154,7 +154,7 @@ public class HumanClient {
 		assert(floorUrl != null);
 		ImageIcon floor =new ImageIcon(floorUrl);
 		Image image1 = floor.getImage(); // transform it 
-		Image newimg1 = image1.getScaledInstance(160, 110,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		Image newimg1 = image1.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		floorIcon = new ImageIcon(newimg1);  // transform it back
 		//assert(floor != null);
 
@@ -162,7 +162,7 @@ public class HumanClient {
 		assert(goldUrl != null);
 		ImageIcon Gold =new ImageIcon(goldUrl);
 		Image image12 = Gold.getImage(); // transform it 
-		Image newimg12 = image12.getScaledInstance(160, 110,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		Image newimg12 = image12.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		goldIcon = new ImageIcon(newimg12);  // transform it back
 		
 
@@ -170,7 +170,7 @@ public class HumanClient {
 		assert(wallUrl != null);
 		ImageIcon wall =new ImageIcon(wallUrl);
 		Image image123 = wall.getImage(); // transform it 
-		Image newimg123 = image123.getScaledInstance(160, 110,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		Image newimg123 = image123.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		wallIcon = new ImageIcon(newimg123);  // transform it back
 //		assert(wall != null);
 
@@ -178,7 +178,7 @@ public class HumanClient {
 		assert(exitUrl != null);
 		ImageIcon exit =new ImageIcon(exitUrl);
 		Image image1234 = exit.getImage(); // transform it 
-		Image newimg1234 = image1234.getScaledInstance(160, 110,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		Image newimg1234 = image1234.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		exitIcon = new ImageIcon(newimg1234);  // transform it back
 		//assert(floor != null);
 
@@ -447,23 +447,23 @@ public class HumanClient {
 
 		// new panels
 		JPanel topPanel = new JPanel();
-		topPanel.setBackground(Color.BLACK);						// setting color
-		topPanel.setPreferredSize(new Dimension(1300, 50));				// dimension of panel
-		frame.getContentPane().add(topPanel, BorderLayout.PAGE_START);	// where to place in in the frame
+//		topPanel.setBackground(Color.BLACK);						// setting color
+//		topPanel.setPreferredSize(new Dimension(1300, 50));				// dimension of panel
+////		frame.getContentPane().add(topPanel, BorderLayout.PAGE_START);	// where to place in in the frame
 		
 		JPanel midPanelC = new JPanel();
 		midPanelC.setBackground(Color.LIGHT_GRAY);
-		midPanelC.setPreferredSize(new Dimension(800, 550));
+		midPanelC.setPreferredSize(new Dimension(920, 600));
 		midPanelC.setLayout(lookPrint);
 
 		JPanel midPanelL = new JPanel();
 		midPanelL.setBackground(Color.BLACK);
-		midPanelL.setPreferredSize(new Dimension(150, 550));
+		midPanelL.setPreferredSize(new Dimension(150, 600));
 		
 
 		JPanel midPanelR = new JPanel();
 		midPanelR.setBackground(Color.BLACK);
-		midPanelR.setPreferredSize(new Dimension(350, 550));
+		midPanelR.setPreferredSize(new Dimension(380, 600));
 		midPanelR.setLayout(right);
 		
 		JPanel panelR=new JPanel(new BorderLayout());
@@ -477,11 +477,11 @@ public class HumanClient {
 		panelR3.setBackground(Color.white);
 		
 		//new GridBagConstraints(columnNumber, rowNumber, columnSpan, rowSpan, columnWeigth, rowWeigth, alignment, fillType, insets, padX, pady)
-		midPanelR.add(panelR,  new GridBagConstraints(0, 0, 1, 1, 0.3, 0.7, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
-                2, 2), 0, 0));
-		midPanelR.add(panelR2,  new GridBagConstraints(1, 0, 1, 2, 0.7, 0.7, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
-                2, 2), 0, 0));
-		midPanelR.add(panelR3,  new GridBagConstraints(0, 1, 1, 1, 0.3, 0.2, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+//		midPanelR.add(panelR,  new GridBagConstraints(0, 0, 1, 1, 0.3, 0.7, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+//                2, 2), 0, 0));
+//		midPanelR.add(panelR2,  new GridBagConstraints(1, 0, 1, 2, 0.7, 0.7, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+//                2, 2), 0, 0));
+		midPanelR.add(panelR3,  new GridBagConstraints(0, 1, 1, 1, 0.5, 0.2, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
                 2, 2), 0, 0));
 	    
 	    
@@ -505,8 +505,8 @@ public class HumanClient {
         panel4.setBorder(BorderFactory.createEtchedBorder());
         panel.setBackground(Color.BLACK);
 //new GridBagConstraints(columnNumber, rowNumber, columnSpan, rowSpan, columnWeigth, rowWeigth, alignment, fillType, insets, padX, pady)
-        bottomPanel.add(panel,  new GridBagConstraints(0, 0, 1, 2, 0.17, 0.5, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
-                2, 2), 0, 0));
+//        bottomPanel.add(panel,  new GridBagConstraints(0, 0, 1, 2, 0.17, 0.5, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+//                2, 2), 0, 0));
         bottomPanel.add(panel2,  new GridBagConstraints(1, 0, 1, 1, 0.73, 0.9, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
                 2, 2), 0, 0));
         bottomPanel.add(panel3,  new GridBagConstraints(2, 0, 1, 2, 0.10, 0.5, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
@@ -517,7 +517,7 @@ public class HumanClient {
 
 		// add panel to frame
 		frame.getContentPane().add(midPanelC, BorderLayout.CENTER);
-		frame.getContentPane().add(midPanelL, BorderLayout.LINE_START);
+//		frame.getContentPane().add(midPanelL, BorderLayout.LINE_START);
 		frame.getContentPane().add(midPanelR, BorderLayout.LINE_END);
 		frame.getContentPane().add(bottomPanel, BorderLayout.PAGE_END);
 
