@@ -44,7 +44,7 @@ public class RunThread extends Thread{
 				String[] as= output.trim().split(" ");
 				if(as[0].equals("LOOK"))
 				{
-					System.out.println("I AM STUPID");
+//					System.out.println("I AM STUPID");
 					humanClient.updateLook(as[1]);
 
 				}
@@ -61,6 +61,7 @@ public class RunThread extends Thread{
 				{
 					for(int i=1;i<as.length;i++)
 					{
+						System.out.println("whisper"+output);
 						humanClient.appendToOutput(as[i]+ " ");
 					}
 
