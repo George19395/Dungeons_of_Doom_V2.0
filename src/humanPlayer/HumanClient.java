@@ -669,16 +669,15 @@ public class HumanClient {
 
 				topPanel.setToolTipText("");
 				String[] splitInput=chatText.getText().trim().split(" ");
-//				if(splitInput.length>1) { //if using intext username but we get from combo box now
+				if(splitInput.length>1) {
 //					myRun.sendToServer("WHISPER "+combo1+chatText.getText());
 //					String selectedUsername= combo1.GetItemText(combo1.Selected);
-				String selectedUsername = String.valueOf(combo1.getSelectedItem());
-				System.out.println(selectedUsername+" asdadaadsdas");
+					String selectedUsername = String.valueOf(combo1.getSelectedItem());
 //					System.out.println("I AM HERE"+ selectedUsername);
-				myRun.sendToServer("WHISPER "+selectedUsername+chatText.getText());
+					myRun.sendToServer("WHISPER "+"Enter_Username: "+chatText.getText());
 					
-//				}
-//				
+				}
+				
 
 
 

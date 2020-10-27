@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
-
 import gameActions.GameLogic;
 
 /**
@@ -107,14 +105,13 @@ public class ThreadServer extends Thread{
 
 ////------------------server receives username of player----------------------------------------			
 			String username=in.readLine();	
-			System.out.println("A");
 			System.out.println(username+" has connected");
 			DODServer.setClientUsername(this.id,username);
-			System.out.println("B");
+			
 //			String activeGames=in.readLine();
 			System.out.println("Getting Active games...");
 			DODServer.showGames(id);
-			System.out.println("C");
+			
 			
 ////------------server receives if player creates game or joins game--------------------
 			GameLogic gameLogic;

@@ -99,7 +99,7 @@ public class RunThread extends Thread{
 					System.out.println("runThread gameAdded");
 //					humanClient.addToJoinGame(str);
 				}
-				if((!as[0].equals("LOOK")))
+				if((!as[0].equals("LOOK")) && (!as[0].equals("GamesAll")))
 				{
 					humanClient.appendToTextArea(output+ "\n");
 				}
