@@ -180,11 +180,14 @@ public class DODServer {
 		int idReceiver=1;
 		for(int i=0;i<usernameList.size();i++) {
 			System.out.println("I AM HERE YOU DUMB FUCK");
-			if(usernameList.get(i)[1].equals(receiverUsername)) {
+			System.out.println(receiverUsername);
+			System.out.println(usernameList.get(i)[1].toUpperCase());
+			if(usernameList.get(i)[1].toUpperCase().equals(receiverUsername)) {
 				idReceiver=Integer.parseInt(usernameList.get(i)[0]);
+				System.out.println("I AM HERE YOU DUMB FUCK "+ Integer.parseInt(usernameList.get(i)[0]));
 			}
 		}
-		
+//		System.out.println("I AM HERE YOU DUMB FUCK "+idReceiver);
 		
 		for (int i=0; i<threadList.size(); i++){
 			if ((threadList.get(i).id)==idReceiver){
