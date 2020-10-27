@@ -64,6 +64,7 @@ public class RunThread extends Thread{
 						System.out.println("whisper"+output);
 						humanClient.appendToOutput(as[i]+ " ");
 					}
+					humanClient.appendToOutput(""+ "\n");
 
 				}
 				if(as[0].equals("Usernames"))
