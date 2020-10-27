@@ -49,15 +49,13 @@ public class DODServer {
 	
 	private static JPanel midPanelC;
 	
-//---------------------------------------- MAKE LISTS TO PRIVATE AND USE GETTERS AND SETTERS--------------------------------
+	//----------------------------------------
 
 	public static ArrayList<ThreadServer> threadList = new ArrayList<ThreadServer>(); 	// creates the threadserver array list
-	public static ArrayList<String[]> usernameList = new ArrayList<>();				// creates array list which holds all the usernames of the users
+	private static ArrayList<String[]> usernameList = new ArrayList<>();				// creates array list which holds all the usernames of the users
 	public static HashMap<Integer,GameLogic> games = new HashMap<Integer, GameLogic>();
 	public static ArrayList<Integer[]> gamesAndId= new ArrayList<>(); //[0]=id [1]=gameId
-///--------------------------------------------------------------------------------------------------------------------------
-	
-	//	private static BotMemory botMemory;
+//	private static BotMemory botMemory;
 
 	private static JTextArea textArea;
 	private static JScrollPane scroll;
