@@ -59,10 +59,10 @@ public class RunThread extends Thread{
 				}
 				if(as[0].equals("Whisper"))
 				{
-					for(int i=1;i<as.length;i++)
+					for(int i=3;i<as.length;i++)
 					{
 						System.out.println("whisper"+output);
-						humanClient.appendToOutput(as[i]+ " ");
+						humanClient.appendToOutput(as[1]+" whishpers: "+as[i].toLowerCase()+ " ");
 					}
 					humanClient.appendToOutput(""+ "\n");
 
