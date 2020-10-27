@@ -58,7 +58,7 @@ public class Run{
 	 * method which sends information to server
 	 */
 	public void sendToServer(String command) {
-//		System.out.println("Run "+command);
+		System.out.println("Run "+command);
 		this.out.println(command);
 	}
 

@@ -162,7 +162,7 @@ public class DODServer {
 	/**
 	 * Whisper command which allows users to communicate between in the in private
 	 */
-	public static void whisper(int idSender,String receiverUsername, String message) {
+	public static void whisper(int idSender,int idReceiver, String message) {
 //---------- finds my username---------------------------------------
 		String myUsername="";
 		for (int i=0; i<usernameList.size(); i++){
@@ -175,15 +175,6 @@ public class DODServer {
 //				threadList.get(Integer.parseInt(usernameList.get(i)[0])).shoutMessage("SHOUT "+usernameList.get(id)[1]+ " says: " + message);
 //			}
 //		}
-		int idReceiver=1;
-		for(int i=0;i<usernameList.size();i++) {
-			System.out.println("I AM HERE YOU DUMB FUCK");
-			if(usernameList.get(i)[1].equals(receiverUsername)) {
-				idReceiver=Integer.parseInt(usernameList.get(i)[0]);
-			}
-		}
-		
-		
 		for (int i=0; i<threadList.size(); i++){
 			if ((threadList.get(i).id)==idReceiver){
 //				threadList.get(Integer.parseInt(usernameList.get(i)[0])).shoutMessage("SHOUT "+usernameList.get(id)[1]+ " says: " + message);

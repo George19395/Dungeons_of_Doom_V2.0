@@ -483,8 +483,7 @@ public class GameLogic
 					stringBuilder.append(splitInput[i]);
 				}
 				message=stringBuilder.toString();
-//				DODServer.whisper(id,Integer.parseInt(splitInput[1]),message);
-				DODServer.whisper(id,splitInput[1],message);
+				DODServer.whisper(id,Integer.parseInt(splitInput[1]),message);
 				return "Message sent!";
 			}
 

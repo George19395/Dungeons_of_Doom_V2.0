@@ -49,8 +49,8 @@ public class HumanClient {
 	private static JTextArea textArea;
 	private static ImageIcon exitIcon;
 	private static JTextArea outputText;
-	private static JComboBox combo1=new JComboBox();
-	private JComboBox combo2 =new JComboBox();
+	private static JComboBox combo1;
+	private JComboBox combo2 =new JComboBox();;
 	JPopupMenu popup;
 	
 	private Run myRun;	
@@ -578,7 +578,7 @@ public class HumanClient {
 
 		JButton showUsernames = new JButton("ShowUsernames");
 		panel4.add(showUsernames,BorderLayout.LINE_END);
-//		combo1 = new JComboBox();
+		combo1 = new JComboBox();
 //		combo1.addItem("asdasd");
 //		combo1.addItem("asdasd");
 		panel4.add(combo1,BorderLayout.WEST);
@@ -670,12 +670,7 @@ public class HumanClient {
 				topPanel.setToolTipText("");
 				String[] splitInput=chatText.getText().trim().split(" ");
 				if(splitInput.length>1) {
-//					myRun.sendToServer("WHISPER "+combo1+chatText.getText());
-//					String selectedUsername= combo1.GetItemText(combo1.Selected);
-					String selectedUsername = String.valueOf(combo1.getSelectedItem());
-//					System.out.println("I AM HERE"+ selectedUsername);
-					myRun.sendToServer("WHISPER "+"Enter_Username: "+chatText.getText());
-					
+					myRun.sendToServer("WHISPER "+chatText.getText());
 				}
 				
 
