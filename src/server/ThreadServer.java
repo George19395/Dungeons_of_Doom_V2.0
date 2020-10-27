@@ -202,6 +202,14 @@ public class ThreadServer extends Thread{
 					for(int i=0;i<DODServer.threadList.size();i++) {
 						if(DODServer.threadList.get(i).id == id) {
 							DODServer.threadList.remove(i);
+						if(Integer.parseInt(DODServer.usernameList.get(i)[0])==id) {
+							DODServer.usernameList.remove(i);
+						}
+						if(DODServer.gamesAndId.get(i)[0]==id) {
+							DODServer.gamesAndId.remove(i);
+						}
+						///check hashMap, if the player that left is the last player in the game, dispose the this.GameLogic
+						
 //							gameLogic.removePlayer(id);
 						}
 					}
