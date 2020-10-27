@@ -465,7 +465,9 @@ public class GameLogic
 //		}		
 		else
 		{
-			String[] splitInput=input.trim().split(" ");					//split the string when ever the is space
+			String[] splitInput=input.split(" ");					//split the string when ever the is space
+//			System.out.println(splitInput[1]+" LETS FUCKING G "+ command+" "+input);
+//			System.out.println(splitInput[0]);
 			if (splitInput[0].equals("SHOUT")&&splitInput.length>1) {		// if first string is equal to shout and there are more than 1 strings
 				StringBuilder stringBuilder = new StringBuilder();
 				String message;
@@ -476,7 +478,8 @@ public class GameLogic
 				DODServer.shout(id, message);
 				return "Message sent!";
 			}
-			if (splitInput[0].equals("WHISPER")&&splitInput.length>2){		// same as above but with the whisper command which required more than 2 substrings since it requires the players username aswell.
+			if (splitInput[0].equals("WHISPER")&&splitInput.length>1){		// same as above but with the whisper command which required more than 2 substrings since it requires the players username aswell.
+//				System.out.println("AAAAAAAAAAAAAAAAAAAAAAA");
 				StringBuilder stringBuilder = new StringBuilder();
 				String message;
 				for (int i=2; i<splitInput.length; i++){
