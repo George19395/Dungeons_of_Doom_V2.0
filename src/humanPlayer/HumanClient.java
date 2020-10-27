@@ -9,6 +9,8 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -383,6 +385,15 @@ public class HumanClient {
 		midPanelC.add(bUsername);
 		midPanelC.add(userName);
 		
+		userName.setEditable(false);
+		userName.addFocusListener(new FocusAdapter() {
+		    public void focusGained(FocusEvent e) {
+		    	userName.setEditable(true);
+		        JTextField source = (JTextField)e.getComponent();
+		        source.setText("");
+		        source.removeFocusListener(this);
+		    }
+		});
 		bUsername.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -670,11 +681,14 @@ public class HumanClient {
 				topPanel.setToolTipText("");
 				String[] splitInput=chatText.getText().trim().split(" ");
 				if(splitInput.length>=1) {
-//					myRun.sendToServer("WHISPER "+combo1+chatText.getText());
-//					String selectedUsername= combo1.GetItemText(combo1.Selected);
-					String selectedUsername = String.valueOf(combo1.getSelectedItem());
-//					System.out.println("I AM HERE"+ selectedUsername);
-					myRun.sendToServer("WHISPER "+selectedUsername+" "+chatText.getText());
+					if(!(String.valueOf(combo1.getSelectedItem()).isEmpty()) ){
+//						myRun.sendToServer("WHISPER "+combo1+chatText.getText());
+//						String selectedUsername= combo1.GetItemText(combo1.Selected);
+						String selectedUsername = String.valueOf(combo1.getSelectedItem());
+//						System.out.println("I AM HERE"+ selectedUsername);
+						myRun.sendToServer("WHISPER "+selectedUsername+" "+chatText.getText());
+					}
+
 					
 				}
 				
