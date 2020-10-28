@@ -205,6 +205,9 @@ public class GameLogic
 		if(this.map.getTile(pos) == '#') {
 			return false;
 		}
+		if(this.map.getTile(pos) == '$'){
+				return false;
+		}
 
 		for(String[] playerStuff: players){
 

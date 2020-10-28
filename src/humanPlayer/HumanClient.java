@@ -51,6 +51,9 @@ public class HumanClient {
 	private static ImageIcon wallIcon;
 	private static JTextArea textArea;
 	private static ImageIcon exitIcon;
+	private static ImageIcon lavaTileIcon;
+	private static ImageIcon lavaIcon;
+	
 	private static JTextArea outputText;
 	private static JComboBox combo1=new JComboBox();
 	private JComboBox combo2 =new JComboBox();
@@ -147,7 +150,7 @@ public class HumanClient {
 	private void Images()
 	{
 
-		java.net.URL humanUrl = HumanClient.class.getResource("/aPlayer.PNG");
+		java.net.URL humanUrl = HumanClient.class.getResource("/aPlayer2.png");
 		assert(humanUrl != null);
 		ImageIcon human =new ImageIcon(humanUrl);
 		Image image = human.getImage(); // transform it 
@@ -155,7 +158,7 @@ public class HumanClient {
 		humanIcon = new ImageIcon(newimg);  // transform it back
 		
 
-		java.net.URL floorUrl = HumanClient.class.getResource("/Floor.PNG");
+		java.net.URL floorUrl = HumanClient.class.getResource("/walkTile.png");
 		assert(floorUrl != null);
 		ImageIcon floor =new ImageIcon(floorUrl);
 		Image image1 = floor.getImage(); // transform it 
@@ -163,7 +166,7 @@ public class HumanClient {
 		floorIcon = new ImageIcon(newimg1);  // transform it back
 		//assert(floor != null);
 
-		java.net.URL goldUrl = HumanClient.class.getResource("/Gold.PNG");
+		java.net.URL goldUrl = HumanClient.class.getResource("/Gold2.png");
 		assert(goldUrl != null);
 		ImageIcon Gold =new ImageIcon(goldUrl);
 		Image image12 = Gold.getImage(); // transform it 
@@ -179,7 +182,7 @@ public class HumanClient {
 		wallIcon = new ImageIcon(newimg123);  // transform it back
 //		assert(wall != null);
 
-		java.net.URL exitUrl = HumanClient.class.getResource("/Exit.PNG");
+		java.net.URL exitUrl = HumanClient.class.getResource("/Exit2.png");
 		assert(exitUrl != null);
 		ImageIcon exit =new ImageIcon(exitUrl);
 		Image image1234 = exit.getImage(); // transform it 
@@ -187,6 +190,21 @@ public class HumanClient {
 		exitIcon = new ImageIcon(newimg1234);  // transform it back
 		//assert(floor != null);
 
+		java.net.URL lavaUrl = HumanClient.class.getResource("/Lava.png");
+		assert(lavaUrl != null);
+		ImageIcon lava =new ImageIcon(lavaUrl);
+		Image image12345 = lava.getImage(); // transform it 
+		Image newimg12345 = image12345.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		lavaIcon = new ImageIcon(newimg12345);  // transform it back
+		//assert(floor != null);	
+
+		java.net.URL lavatileUrl = HumanClient.class.getResource("/wallTile2.png");
+		assert(lavatileUrl != null);
+		ImageIcon lavaTile =new ImageIcon(lavatileUrl);
+		Image image123456 = lavaTile.getImage(); // transform it 
+		Image newimg123456 = image123456.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		lavaTileIcon = new ImageIcon(newimg123456);  // transform it back
+		//assert(floor != null);		
 	}
 
 	/**
@@ -215,9 +233,12 @@ public class HumanClient {
 			{
 				labels[k].setIcon(exitIcon);
 			}
-			else
+			else if(c=='#')
 			{
-				labels[k].setIcon(wallIcon);
+				labels[k].setIcon(lavaTileIcon);
+			}
+			else {
+				labels[k].setIcon(lavaIcon);
 			}
 		}
 	}
