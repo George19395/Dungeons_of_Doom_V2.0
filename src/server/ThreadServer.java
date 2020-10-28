@@ -195,8 +195,14 @@ public class ThreadServer extends Thread{
 					out.println(action);
 					message= "Success "+ command;
 					System.out.println("PickUP gold =: " + action);
-
 					
+					
+				}
+				if(command.equals("ALLGOLD")) {
+					out.println("ALLGOLD "+ action);
+				}
+				if(command.equals("GOLDOWNED")) {
+					out.println("GOLDOWNED "+action);
 				}
 				if(command.equals("QUIT")) {
 					for(int i=0;i<DODServer.threadList.size();i++) {

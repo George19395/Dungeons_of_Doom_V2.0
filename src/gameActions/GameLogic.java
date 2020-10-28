@@ -104,6 +104,14 @@ public class GameLogic
 
 		return ""+currentGold;
 	}
+	public synchronized String getPlayersCurrentGold(int id) {
+		
+		int index=indexFromId(id);
+		int currentGold= Integer.parseInt(players.get(index)[2]);
+		
+		return ""+currentGold;
+		
+	}
 
 	/**
 	 *Goes trough the player list
@@ -456,6 +464,12 @@ public class GameLogic
 		else if(input.equals("PICKUP"))
 		{
 			return pickup(id);
+		}
+		else if(input.equals("ALLGOLD")) {
+			return ""+countGoldLeftOnMap();
+		}
+		else if(input.equals("GOLDOWNED")) {
+			return getPlayersCurrentGold(id);
 		}
 		else if(input.equals("QUIT"))
 		{

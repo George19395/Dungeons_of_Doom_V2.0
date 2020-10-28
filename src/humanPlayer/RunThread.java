@@ -36,6 +36,7 @@ public class RunThread extends Thread{
 			String output;	
 			while((output=in.readLine())!=null)			// when input is not null
 			{
+				
 				if(output.equals("Disconnect"))				// if the return type of the command is Disconnect do the following
 				{
 					System.exit(0);
@@ -100,10 +101,33 @@ public class RunThread extends Thread{
 					System.out.println("runThread gameAdded");
 //					humanClient.addToJoinGame(str);
 				}
+				if(as[0].equals("ALLGOLD")) {
+					humanClient.jlabelGold.removeAll();
+					humanClient.jlabelGold.setText("Gold Available:"+as[1]);
+					
+
+///----has to be html format to use new line
+				}
+				if(as[0].equals("GOLD:")) {
+					humanClient.jlabelGold2.removeAll();
+
+					humanClient.jlabelGold.setText("Gold Required:"+as[1]);
+				}
+				if(as[0].equals("GOLDOWNED")) {
+					humanClient.jlabelGold3.removeAll();
+//					System.out.println("HELLO IDIOT" +as[0] + as[1]);
+					humanClient.jlabelGold3.setText("Gold Owned:"+as[1]);
+				}
+				
 				if((!as[0].equals("LOOK")) && (!as[0].equals("GamesAll")))
 				{
 					humanClient.appendToTextArea(output+ "\n");
+					System.out.println(output);
 				}
+//				else {
+////--------------------Cheap SOLUTION TO MY ERROR ON ALLGOLD ABOVE -- if not use this when pickup client freezes
+//					System.out.println("Ouput not recongised" + output);
+//				}
 			}
 		}
 		catch(Exception e){

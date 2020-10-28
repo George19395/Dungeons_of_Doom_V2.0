@@ -55,7 +55,9 @@ public class HumanClient {
 	private static JComboBox combo1=new JComboBox();
 	private JComboBox combo2 =new JComboBox();
 	JPopupMenu popup;
-	JLabel jlabelGold = new JLabel("This is a label");
+	JLabel jlabelGold = new JLabel("Gold Available: 4");//This label has to have 6words
+	JLabel jlabelGold2 = new JLabel("Gold Required: 3");//This label has to have 6words
+	JLabel jlabelGold3 = new JLabel("Gold Owned: 0");//This label has to have 6words
 	private Run myRun;	
 
 
@@ -292,6 +294,7 @@ public class HumanClient {
 				myRun.sendToServer("CreateGame");
 				iniGui();
 				startLooking();
+				myRun.sendToServer("ALLGOLD");
 			}
 		});
 		
@@ -318,6 +321,7 @@ public class HumanClient {
 				frame.setVisible(false);
 				iniGui();
 				startLooking();
+				myRun.sendToServer("ALLGOLD");
 			}
 		});
 		
@@ -483,20 +487,30 @@ public class HumanClient {
 		panelR.setBackground(Color.white);
 		JPanel panelR2=new JPanel(new BorderLayout());
 		panelR2.setBorder(BorderFactory.createEtchedBorder());
-		panelR2.setBackground(Color.BLACK);
+		panelR2.setBackground(Color.white);
 		JPanel panelR3=new JPanel(new BorderLayout());
 		panelR3.setBorder(BorderFactory.createEtchedBorder());
 		panelR3.setBackground(Color.white);
+		JPanel panelR4=new JPanel(new BorderLayout());
+		panelR4.setBorder(BorderFactory.createEtchedBorder());
+		panelR4.setBackground(Color.white);
 		
 		 
 		 jlabelGold.setFont(new Font("Verdana",1,20));
 		 panelR.add(jlabelGold);
+		 jlabelGold2.setFont(new Font("Verdana",1,20));
+		 panelR2.add(jlabelGold2);
+		 jlabelGold3.setFont(new Font("Verdana",1,20));
+		 panelR4.add(jlabelGold3);
+		 
 		//new GridBagConstraints(columnNumber, rowNumber, columnSpan, rowSpan, columnWeigth, rowWeigth, alignment, fillType, insets, padX, pady)
-		midPanelR.add(panelR,  new GridBagConstraints(0, 0, 1, 1, 0.3, 0.7, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+		midPanelR.add(panelR,  new GridBagConstraints(0, 0, 1, 1, 0.3, 0.2, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
                 2, 2), 0, 0));
-//		midPanelR.add(panelR2,  new GridBagConstraints(1, 0, 1, 2, 0.7, 0.7, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
-//                2, 2), 0, 0));
-		midPanelR.add(panelR3,  new GridBagConstraints(0, 1, 1, 1, 0.5, 0.2, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+		midPanelR.add(panelR2,  new GridBagConstraints(0, 1, 1, 1, 0.7, 0.2, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+                2, 2), 0, 0));
+		midPanelR.add(panelR4,  new GridBagConstraints(0, 2, 1, 1, 0.5, 0.2, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+                2, 2), 0, 0));
+		midPanelR.add(panelR3,  new GridBagConstraints(0, 3, 1, 1, 0.5, 0.4, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
                 2, 2), 0, 0));
 	    
 	    
@@ -658,6 +672,8 @@ public class HumanClient {
 				topPanel.setToolTipText("");
 				myRun.sendToServer("PICKUP");
 				
+				myRun.sendToServer("ALLGOLD");
+				myRun.sendToServer("GOLDOWNED");
 
 			}
 		});
