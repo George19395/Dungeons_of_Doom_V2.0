@@ -160,7 +160,7 @@ public class HumanClient {
 		assert(humanUrl != null);
 		ImageIcon human =new ImageIcon(humanUrl);
 		Image image = human.getImage(); // transform it 
-		Image newimg = image.getScaledInstance(920/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		Image newimg = image.getScaledInstance(750/5, 460/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		humanIcon = new ImageIcon(newimg);  // transform it back
 		
 
@@ -168,7 +168,7 @@ public class HumanClient {
 		assert(floorUrl != null);
 		ImageIcon floor =new ImageIcon(floorUrl);
 		Image image1 = floor.getImage(); // transform it 
-		Image newimg1 = image1.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		Image newimg1 = image1.getScaledInstance(750/5, 460/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		floorIcon = new ImageIcon(newimg1);  // transform it back
 		//assert(floor != null);
 
@@ -176,7 +176,7 @@ public class HumanClient {
 		assert(goldUrl != null);
 		ImageIcon Gold =new ImageIcon(goldUrl);
 		Image image12 = Gold.getImage(); // transform it 
-		Image newimg12 = image12.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		Image newimg12 = image12.getScaledInstance(750/5, 460/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		goldIcon = new ImageIcon(newimg12);  // transform it back
 		
 
@@ -184,7 +184,7 @@ public class HumanClient {
 		assert(wallUrl != null);
 		ImageIcon wall =new ImageIcon(wallUrl);
 		Image image123 = wall.getImage(); // transform it 
-		Image newimg123 = image123.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		Image newimg123 = image123.getScaledInstance(750/5, 460/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		wallIcon = new ImageIcon(newimg123);  // transform it back
 //		assert(wall != null);
 
@@ -192,7 +192,7 @@ public class HumanClient {
 		assert(exitUrl != null);
 		ImageIcon exit =new ImageIcon(exitUrl);
 		Image image1234 = exit.getImage(); // transform it 
-		Image newimg1234 = image1234.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		Image newimg1234 = image1234.getScaledInstance(750/5, 460/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		exitIcon = new ImageIcon(newimg1234);  // transform it back
 		//assert(floor != null);
 
@@ -200,7 +200,7 @@ public class HumanClient {
 		assert(lavaUrl != null);
 		ImageIcon lava =new ImageIcon(lavaUrl);
 		Image image12345 = lava.getImage(); // transform it 
-		Image newimg12345 = image12345.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		Image newimg12345 = image12345.getScaledInstance(750/5, 460/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		lavaIcon = new ImageIcon(newimg12345);  // transform it back
 		//assert(floor != null);	
 
@@ -208,7 +208,7 @@ public class HumanClient {
 		assert(lavatileUrl != null);
 		ImageIcon lavaTile =new ImageIcon(lavatileUrl);
 		Image image123456 = lavaTile.getImage(); // transform it 
-		Image newimg123456 = image123456.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		Image newimg123456 = image123456.getScaledInstance(750/5, 460/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		lavaTileIcon = new ImageIcon(newimg123456);  // transform it back
 		//assert(floor != null);	
 		
@@ -372,7 +372,7 @@ public class HumanClient {
 	}
 	private void displayUsernameFrame() {
 		JFrame frame = new JFrame("Front Page");
-		frame.setPreferredSize(new Dimension(1300, 800));
+		frame.setPreferredSize(new Dimension(1000, 650));
 		Action ca = new AbstractAction()
 		{
 		    /**
@@ -485,7 +485,7 @@ public class HumanClient {
 
 		/////////// set up window
 		JFrame frame = new JFrame("Demo");
-		frame.setPreferredSize(new Dimension(1300, 800));
+		frame.setPreferredSize(new Dimension(1000, 650));
 //----------------Add confimartion for exit and if do send to server to quit to remove players thread
 		Action ca = new AbstractAction()
 		{
@@ -529,17 +529,17 @@ public class HumanClient {
 		
 		JPanel midPanelC = new JPanel();
 		midPanelC.setBackground(Color.LIGHT_GRAY);
-		midPanelC.setPreferredSize(new Dimension(920, 600));
+		midPanelC.setPreferredSize(new Dimension(670, 500));
 		midPanelC.setLayout(lookPrint);
 
 		JPanel midPanelL = new JPanel();
 		midPanelL.setBackground(Color.BLACK);
-		midPanelL.setPreferredSize(new Dimension(150, 600));
+		midPanelL.setPreferredSize(new Dimension(100, 500));
 		
 
 		JPanel midPanelR = new JPanel();
 		midPanelR.setBackground(Color.BLACK);
-		midPanelR.setPreferredSize(new Dimension(380, 600));
+		midPanelR.setPreferredSize(new Dimension(230, 500));
 		midPanelR.setLayout(right);
 		
 		JPanel panelR=new JPanel(new BorderLayout());
@@ -576,7 +576,7 @@ public class HumanClient {
 	    
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setBackground(Color.BLACK);
-		bottomPanel.setPreferredSize(new Dimension(1300, 200));
+		bottomPanel.setPreferredSize(new Dimension(1000, 150));
 		bottomPanel.setLayout(bottom);
 		
 		JPanel panel = new JPanel(new BorderLayout());
