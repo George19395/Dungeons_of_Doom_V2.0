@@ -30,6 +30,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
+import gameActions.BackgroundPanel;
 import gameActions.CloseListener;
 
 /**
@@ -53,6 +54,8 @@ public class HumanClient {
 	private static ImageIcon exitIcon;
 	private static ImageIcon lavaTileIcon;
 	private static ImageIcon lavaIcon;
+	private static ImageIcon initialPage;
+	
 	
 	private static JTextArea outputText;
 	private static JComboBox combo1=new JComboBox();
@@ -69,9 +72,12 @@ public class HumanClient {
 	 *
 	 */
 	public HumanClient(Run myRun) {
+		
 		this.myRun=myRun;
+		
 		displayUsernameFrame();
 		displayGame();
+		
 	}
 	
 	/**
@@ -204,7 +210,14 @@ public class HumanClient {
 		Image image123456 = lavaTile.getImage(); // transform it 
 		Image newimg123456 = image123456.getScaledInstance(910/5, 520/5,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		lavaTileIcon = new ImageIcon(newimg123456);  // transform it back
-		//assert(floor != null);		
+		//assert(floor != null);	
+		
+		java.net.URL asd = HumanClient.class.getResource("/Initial.png");
+		assert(asd != null);
+		ImageIcon huma =new ImageIcon(asd);
+		Image imagea = huma.getImage(); // transform it 
+		Image newimga = imagea.getScaledInstance(1000, 500,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		initialPage = new ImageIcon(newimga);  // transform it back
 	}
 
 	/**
@@ -253,8 +266,10 @@ public class HumanClient {
 	}
 
 	public void createGameFrame() {
+		
 		JFrame frame = new JFrame("Front Page");
 		frame.setPreferredSize(new Dimension(1000,500));
+//		frame.add(new JLabel(initialPage));
 		
 		Action ca = new AbstractAction()
 		{
@@ -286,8 +301,13 @@ public class HumanClient {
 		topPanel.setBackground(Color.BLACK);						// setting color
 		frame.getContentPane().add(topPanel, BorderLayout.PAGE_START);	// where to place in in the frame
 		
-		JPanel midPanelC = new JPanel();
-		midPanelC.setBackground(Color.WHITE);
+//		JPanel midPanelC = new JPanel();
+		BackgroundPanel midPanelC = new BackgroundPanel();
+		midPanelC.setLayout(new GridBagLayout());
+//		midPanelC.add(new GridBagConstraints());
+//		midPanelC.setBackground(Color.WHITE);
+//		ImagePanel midPanelC = new ImagePanel(initialImage);
+//		midPanelC.isOptimizedDrawingEnabled();
 
 
 		JPanel midPanelL = new JPanel();
@@ -299,13 +319,14 @@ public class HumanClient {
 	    
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setBackground(Color.YELLOW);
-
-
-		frame.getContentPane().add(midPanelC, BorderLayout.CENTER);
-
+		
 		JButton startGame = new JButton("Create Game");
 		startGame.setPreferredSize(new Dimension(100,100));
 		midPanelC.add(startGame);
+
+		frame.getContentPane().add(midPanelC, BorderLayout.CENTER);
+
+		
 		
 		startGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -382,19 +403,41 @@ public class HumanClient {
 		topPanel.setBackground(Color.BLACK);						// setting color
 		frame.getContentPane().add(topPanel, BorderLayout.PAGE_START);	// where to place in in the frame
 		
-		JPanel midPanelC = new JPanel();
-		midPanelC.setBackground(Color.WHITE);
+//		JPanel midPanelC = new JPanel();
+//		midPanelC.setBackground(Color.WHITE);
+//		GridLayout lookPrint = new GridLayout(5, 5);
+		BackgroundPanel midPanelC = new BackgroundPanel();
+//		midPanelC.setLayout(lookPrint);
+		
+//		midPanelC.setLayout(new GridBagLayout());
+//        JPanel newPanel = new JPanel(new GridBagLayout());
+        
+//        GridBagConstraints constraints = new GridBagConstraints();
+//        constraints.anchor = GridBagConstraints.NORTH;
+//        constraints.insets = new Insets(0, 0, 0, 0);
 
-
-		JPanel midPanelL = new JPanel();
-		midPanelL.setBackground(Color.BLUE);
-
-
-		JPanel midPanelR = new JPanel();
-		midPanelR.setBackground(Color.WHITE);
-	    
-		JPanel bottomPanel = new JPanel();
-		bottomPanel.setBackground(Color.YELLOW);
+		JButton bUsername = new JButton("Set Username:");
+		bUsername.setFont(new Font("Arial", Font.PLAIN, 20));
+		bUsername.setPreferredSize(new Dimension(200, 50));
+		bUsername.setBackground(Color.BLACK);
+		bUsername.setForeground(Color.WHITE);
+		bUsername.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		
+		JTextField userName = new JTextField("Enter_Username:");
+		userName.setFont(new Font("Arial", Font.PLAIN, 20));
+		userName.setPreferredSize(new Dimension(200, 50));
+		userName.setBackground(Color.BLACK);
+		userName.setForeground(Color.WHITE);
+		userName.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		userName.setLocation(300, 200);
+//		userName.setBounds(100, 100, 150, 20);
+		    
+        midPanelC.add(bUsername);
+		
+//		midPanelC.add(bUsername);
+//        constraints.gridx = 1;
+        midPanelC.add(userName);
+//		midPanelC.add(userName);
 
 		// add panel to frame
 		frame.getContentPane().add(midPanelC, BorderLayout.CENTER);
@@ -404,12 +447,8 @@ public class HumanClient {
 		
 		
 		
-		JButton bUsername = new JButton("Set Username:");
-		bUsername.setPreferredSize(new Dimension(150, 20));
-		JTextField userName = new JTextField("Enter_Username:");
-		userName.setPreferredSize(new Dimension(150, 30));
-		midPanelC.add(bUsername);
-		midPanelC.add(userName);
+
+		
 		
 		userName.setEditable(false);
 		userName.addFocusListener(new FocusAdapter() {
@@ -435,7 +474,7 @@ public class HumanClient {
 			}
 		});
 		
-		
+		frame.setVisible(true);
 		frame.pack();
 	}
 	/**
