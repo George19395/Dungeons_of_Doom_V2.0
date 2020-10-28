@@ -2,6 +2,7 @@ package humanPlayer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -54,7 +55,7 @@ public class HumanClient {
 	private static JComboBox combo1=new JComboBox();
 	private JComboBox combo2 =new JComboBox();
 	JPopupMenu popup;
-	
+	JLabel jlabelGold = new JLabel("This is a label");
 	private Run myRun;	
 
 
@@ -487,9 +488,12 @@ public class HumanClient {
 		panelR3.setBorder(BorderFactory.createEtchedBorder());
 		panelR3.setBackground(Color.white);
 		
+		 
+		 jlabelGold.setFont(new Font("Verdana",1,20));
+		 panelR.add(jlabelGold);
 		//new GridBagConstraints(columnNumber, rowNumber, columnSpan, rowSpan, columnWeigth, rowWeigth, alignment, fillType, insets, padX, pady)
-//		midPanelR.add(panelR,  new GridBagConstraints(0, 0, 1, 1, 0.3, 0.7, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
-//                2, 2), 0, 0));
+		midPanelR.add(panelR,  new GridBagConstraints(0, 0, 1, 1, 0.3, 0.7, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+                2, 2), 0, 0));
 //		midPanelR.add(panelR2,  new GridBagConstraints(1, 0, 1, 2, 0.7, 0.7, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
 //                2, 2), 0, 0));
 		midPanelR.add(panelR3,  new GridBagConstraints(0, 1, 1, 1, 0.5, 0.2, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
@@ -653,6 +657,7 @@ public class HumanClient {
 
 				topPanel.setToolTipText("");
 				myRun.sendToServer("PICKUP");
+				
 
 			}
 		});

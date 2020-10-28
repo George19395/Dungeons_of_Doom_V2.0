@@ -402,6 +402,17 @@ public class GameLogic
 		int index=indexFromId(id);
 		this.players.remove(index);
 	}
+	public synchronized int countGoldLeftOnMap() {
+		int goldLeft =0;
+		String mapString = convertMapToString();
+		for(int i=0;i<mapString.length();i++) {
+			char c = mapString.charAt(i); 
+			if(c == 'G') {
+				goldLeft++;
+			}
+		}
+		return goldLeft;
+	}
 
 	/**
 	 *proccess the command
