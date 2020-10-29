@@ -224,7 +224,9 @@ public class ThreadServer extends Thread{
 				{
 					out.println("Player with username: "+username+" wins");
 					System.out.println("Player with username wins: " + username );
-					System.exit(0);
+					
+//					System.exit(0);
+					
 				}
 
 				else

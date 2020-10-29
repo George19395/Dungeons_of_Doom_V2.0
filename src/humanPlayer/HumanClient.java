@@ -44,6 +44,7 @@ import gameActions.CloseListener;
 public class HumanClient {
 
 	BufferedImage img;
+	JFrame frame;
 
 	private static JScrollPane scroll;
 	private static JLabel[] labels= new JLabel[25];
@@ -268,7 +269,7 @@ public class HumanClient {
 
 	public void createGameFrame() {
 		
-		JFrame frame = new JFrame("Front Page");
+		frame = new JFrame("Front Page");
 		frame.setPreferredSize(new Dimension(1000,500));
 //		frame.add(new JLabel(initialPage));
 		
@@ -550,7 +551,7 @@ public class HumanClient {
 ////		frame.getContentPane().add(topPanel, BorderLayout.PAGE_START);	// where to place in in the frame
 		
 		JPanel midPanelC = new JPanel();
-		midPanelC.setBackground(Color.LIGHT_GRAY);
+		midPanelC.setBackground(Color.BLACK);
 		midPanelC.setPreferredSize(new Dimension(670, 500));
 		midPanelC.setLayout(lookPrint);
 
