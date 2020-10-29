@@ -4,6 +4,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 /**
  *Run Thread runs all the time when called doing certain tasks
  *version: 1.0
@@ -43,6 +45,10 @@ public class RunThread extends Thread{
 				}
 
 				String[] as= output.trim().split(" ");
+				if(as[0].equals("Player")) {
+					JOptionPane.showMessageDialog(humanClient.frame, "No Available Games to Join, Create one yourself");
+					System.exit(0);
+				}
 				if(as[0].equals("LOOK"))
 				{
 //					System.out.println("I AM STUPID");
