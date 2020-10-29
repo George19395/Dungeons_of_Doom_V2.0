@@ -23,6 +23,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
@@ -123,7 +124,7 @@ public class HumanClient {
 		System.out.println("Human Client FUCK ME");
 		String newMessage="";
 		combo2.removeAllItems();
-		for(int i=0; i<splitInput.length;i++) {
+		for(int i=1; i<splitInput.length;i++) {
 			newMessage=splitInput[i];
 			combo2.addItem(newMessage) ;
 			System.out.println("Human Client add to join game"+newMessage);
@@ -303,7 +304,7 @@ public class HumanClient {
 		
 //		JPanel midPanelC = new JPanel();
 		BackgroundPanel midPanelC = new BackgroundPanel();
-		midPanelC.setLayout(new GridBagLayout());
+//		midPanelC.setLayout();
 //		midPanelC.add(new GridBagConstraints());
 //		midPanelC.setBackground(Color.WHITE);
 //		ImagePanel midPanelC = new ImagePanel(initialImage);
@@ -321,7 +322,13 @@ public class HumanClient {
 		bottomPanel.setBackground(Color.YELLOW);
 		
 		JButton startGame = new JButton("Create Game");
-		startGame.setPreferredSize(new Dimension(100,100));
+		startGame.setPreferredSize(new Dimension(200,30));
+		startGame.setFont(new Font("Arial", Font.PLAIN, 15));
+//		startGame.setPreferredSize(new Dimension(200, 50));
+//		startGame.setBackground(Color.BLACK);
+//		startGame.setForeground(Color.WHITE);
+		startGame.setFocusPainted( false );
+		startGame.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		midPanelC.add(startGame);
 
 		frame.getContentPane().add(midPanelC, BorderLayout.CENTER);
@@ -343,7 +350,13 @@ public class HumanClient {
 		JButton joinGame = new JButton("Join Game");
 //		combo2 = new JComboBox();
 //		combo2.addItem("HEY");
-		joinGame.setPreferredSize(new Dimension(100,100));
+		joinGame.setPreferredSize(new Dimension(200,30));
+		joinGame.setFont(new Font("Arial", Font.PLAIN, 15));
+//		startGame.setPreferredSize(new Dimension(200, 50));
+//		startGame.setBackground(Color.BLACK);
+//		startGame.setForeground(Color.WHITE);
+		joinGame.setFocusPainted( false );
+		joinGame.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		midPanelC.add(joinGame);
 		midPanelC.add(combo2);
 /////----------------HERE IS THE POPUP MENu-----------------------------------------------------------		
@@ -356,14 +369,23 @@ public class HumanClient {
 //				String gameSelection = "000123";
 				System.out.println("jComboBox1 : " + combo2);                   
 				
-				String gameSelection= combo2.getSelectedItem().toString();
-				System.out.println("support : " + gameSelection);
-				
-				myRun.sendToServer("JoinGame "+gameSelection);///////////THIS IS THE PROBLEM
-				frame.setVisible(false);
-				iniGui();
-				startLooking();
-				myRun.sendToServer("ALLGOLD");
+
+				if(combo2.getItemCount()==0) {
+					System.out.println("HELLO");
+					JOptionPane.showMessageDialog(frame, "No Available Games to Join, Create one yourself");
+					
+				}
+				else {
+					String gameSelection= combo2.getSelectedItem().toString();
+					System.out.println("support : " + gameSelection);
+					
+					myRun.sendToServer("JoinGame "+gameSelection);///////////THIS IS THE PROBLEM
+					frame.setVisible(false);
+					iniGui();
+					startLooking();
+					myRun.sendToServer("ALLGOLD");
+				}
+
 			}
 		});
 		
@@ -417,19 +439,19 @@ public class HumanClient {
 //        constraints.insets = new Insets(0, 0, 0, 0);
 
 		JButton bUsername = new JButton("Set Username:");
-		bUsername.setFont(new Font("Arial", Font.PLAIN, 20));
-		bUsername.setPreferredSize(new Dimension(200, 50));
-		bUsername.setBackground(Color.BLACK);
-		bUsername.setForeground(Color.WHITE);
-		bUsername.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+		bUsername.setFont(new Font("Arial", Font.PLAIN, 15));
+		bUsername.setPreferredSize(new Dimension(200, 30));
+//		bUsername.setBackground(Color.BLACK);
+//		bUsername.setForeground(Color.WHITE);
+		bUsername.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 		JTextField userName = new JTextField("Enter_Username:");
-		userName.setFont(new Font("Arial", Font.PLAIN, 20));
-		userName.setPreferredSize(new Dimension(200, 50));
-		userName.setBackground(Color.BLACK);
-		userName.setForeground(Color.WHITE);
-		userName.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-		userName.setLocation(300, 200);
+		userName.setFont(new Font("Arial", Font.PLAIN, 15));
+		userName.setPreferredSize(new Dimension(200, 30));
+//		userName.setBackground(Color.BLACK);
+//		userName.setForeground(Color.WHITE);
+		userName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//		userName.setLocation(300, 200);
 //		userName.setBounds(100, 100, 150, 20);
 		    
         midPanelC.add(bUsername);
