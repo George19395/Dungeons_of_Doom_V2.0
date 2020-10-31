@@ -72,6 +72,8 @@ public class DODServer {
 	}
 	static int idNow=0;
 
+	
+	
 	/**
 	 * gets all the usernames from the string array
 	 * @return a string with the usernames
@@ -146,7 +148,7 @@ public class DODServer {
 		}	
 		for(int i=0;i<allPlayers.size();i++) {
 			if(allPlayers.get(i)==id) {
-				allPlayers.remove(id);
+				allPlayers.remove(i);
 			}
 		}
 		
