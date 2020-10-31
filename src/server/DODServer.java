@@ -131,6 +131,37 @@ public class DODServer {
 //		return allUsernames;	
 	}
 	
+	public static void gameOver(int id) {
+		int gameNum = 0;
+		for(int i=0; i<gamesAndId.size();i++) {
+			if(gamesAndId.get(i)[0]==id) {
+				gameNum=gamesAndId.get(i)[1];
+			}
+		}
+		ArrayList<Integer> allPlayers = new ArrayList<Integer>();
+		for(int i=0; i<gamesAndId.size();i++) {
+			if(gamesAndId.get(i)[1]==gameNum) {
+				allPlayers.add(gamesAndId.get(i)[0]);
+			}
+		}	
+		for(int i=0;i<allPlayers.size();i++) {
+			if(allPlayers.get(i)==id) {
+				allPlayers.remove(id);
+			}
+		}
+		
+		for(int i=0;i<threadList.size();i++) {
+			for(int j=0;j<allPlayers.size();j++) {
+				if(threadList.get(i).id==allPlayers.get(j)) {
+					threadList.get(i).sendToClient("GAMEOVER "+ id);
+				}
+			}
+		}
+		
+		
+		
+	}
+	
 	public static void showGames(int id)
 	{
 		String allGames="GamesAll"+" ";

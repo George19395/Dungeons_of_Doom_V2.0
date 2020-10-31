@@ -38,15 +38,24 @@ public class RunThread extends Thread{
 			String output;	
 			while((output=in.readLine())!=null)			// when input is not null
 			{
-				
-				if(output.equals("Disconnect"))				// if the return type of the command is Disconnect do the following
+				String[] as= output.trim().split(" ");
+				if(as[0].equals("GAMEOVER")) {
+					System.out.println("Output" + as[0]);
+
+					JOptionPane.showMessageDialog(humanClient.frame, "You Lost. Player "+as[1] +" Won");
+					System.exit(0);
+				}
+				if(as[0].equals("Disconnect"))				// if the return type of the command is Disconnect do the following
 				{
+					System.out.println("Output" + as[0]);
+
+					JOptionPane.showMessageDialog(humanClient.frame, "Player Quit the game");
 					System.exit(0);
 				}
 
-				String[] as= output.trim().split(" ");
+				
 				if(as[0].equals("Player")) {
-					JOptionPane.showMessageDialog(humanClient.frame, "No Available Games to Join, Create one yourself");
+					JOptionPane.showMessageDialog(humanClient.frame, "Player Wins");
 					System.exit(0);
 				}
 				if(as[0].equals("LOOK"))

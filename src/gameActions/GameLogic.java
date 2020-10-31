@@ -285,6 +285,7 @@ public class GameLogic
 			if (output==(false))
 				return "Success";
 			else
+				DODServer.gameOver(id);
 				return "Eligible to Exit";
 
 		}

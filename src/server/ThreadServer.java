@@ -205,6 +205,7 @@ public class ThreadServer extends Thread{
 					out.println("GOLDOWNED "+action);
 				}
 				if(command.equals("QUIT")) {
+					out.println(action);
 					for(int i=0;i<DODServer.threadList.size();i++) {
 						if(DODServer.threadList.get(i).id == id) {
 							DODServer.threadList.remove(i);
@@ -223,8 +224,8 @@ public class ThreadServer extends Thread{
 				if(gameLogic.playerWins(id)==true)
 				{
 					out.println("Player with username: "+username+" wins");
-					System.out.println("Player with username wins: " + username );
-					
+//					System.out.println("Player with username wins: " + username );
+//					Eligible to Exit/
 //					System.exit(0);
 					
 				}
