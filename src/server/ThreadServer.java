@@ -220,23 +220,25 @@ public class ThreadServer extends Thread{
 //							gameLogic.removePlayer(id);
 						}
 					}
+					gameLogic.removePlayer(id);
 				}
-				if(gameLogic.playerWins(id)==true)
-				{
-					out.println("Player with username: "+username+" wins");
-//					System.out.println("Player with username wins: " + username );
-//					Eligible to Exit/
-//					System.exit(0);
-					
-				}
-
 				else
 				{
 //									System.out.println("HELLOO U STUPUD FUCK");
 					out.println(action);
 					message= "Success "+ command;
 //									System.out.println("FUCKME ACTION "+action);
-				}				
+				}	
+//				if(gameLogic.playerWins(id)==true)
+//				{
+//					out.println("Player with username: "+username+" wins");
+////					System.out.println("Player with username wins: " + username );
+////					Eligible to Exit/
+////					System.exit(0);
+//					
+//				}
+
+							
 			}
 			
 

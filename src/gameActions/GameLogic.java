@@ -539,7 +539,7 @@ public class GameLogic
 	 */
 	public String playerQuit(int id)
 	{
-		removePlayer(id);
+//		removePlayer(id);
 		return "Disconnect";
 	}
 

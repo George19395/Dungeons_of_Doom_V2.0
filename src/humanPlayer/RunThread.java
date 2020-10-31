@@ -38,6 +38,10 @@ public class RunThread extends Thread{
 			String output;	
 			while((output=in.readLine())!=null)			// when input is not null
 			{
+				if(output.equals("Eligible to Exit")){
+					JOptionPane.showMessageDialog(humanClient.frame, "Player Wins");
+					System.exit(0);
+				}
 				String[] as= output.trim().split(" ");
 				if(as[0].equals("GAMEOVER")) {
 					System.out.println("Output" + as[0]);
@@ -60,7 +64,7 @@ public class RunThread extends Thread{
 				}
 				if(as[0].equals("LOOK"))
 				{
-//					System.out.println("I AM STUPID");
+					System.out.println("I AM STUPID");
 					humanClient.updateLook(as[1]);
 
 				}
