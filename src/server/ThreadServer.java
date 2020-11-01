@@ -201,6 +201,9 @@ public class ThreadServer extends Thread{
 				if(command.equals("ALLGOLD")) {
 					out.println("ALLGOLD "+ action);
 				}
+				if(command.equals("GAMECODE")) {
+					out.println(command+" "+rand_int1);
+				}
 				if(command.equals("GOLDOWNED")) {
 					out.println("GOLDOWNED "+action);
 				}

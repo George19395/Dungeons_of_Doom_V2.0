@@ -66,6 +66,7 @@ public class HumanClient {
 	JLabel jlabelGold = new JLabel("Gold Available: 4");//This label has to have 6words
 	JLabel jlabelGold2 = new JLabel("Gold Required: 3");//This label has to have 6words
 	JLabel jlabelGold3 = new JLabel("Gold Owned: 0");//This label has to have 6words
+	JLabel jlabelGold4 = new JLabel("Game Code: ");//This label has to have 6words
 	private Run myRun;	
 
 
@@ -345,6 +346,7 @@ public class HumanClient {
 				iniGui();
 				startLooking();
 				myRun.sendToServer("ALLGOLD");
+				myRun.sendToServer("GAMECODE");
 			}
 		});
 		
@@ -385,6 +387,7 @@ public class HumanClient {
 					iniGui();
 					startLooking();
 					myRun.sendToServer("ALLGOLD");
+					myRun.sendToServer("GAMECODE");
 				}
 
 			}
@@ -565,6 +568,11 @@ public class HumanClient {
 		midPanelR.setPreferredSize(new Dimension(230, 500));
 		midPanelR.setLayout(right);
 		
+		JPanel panelR1=new JPanel(new BorderLayout());
+		panelR1.setBorder(BorderFactory.createEtchedBorder());
+		panelR1.setBackground(Color.white);
+		
+		
 		JPanel panelR=new JPanel(new BorderLayout());
 		panelR.setBorder(BorderFactory.createEtchedBorder());
 		panelR.setBackground(Color.white);
@@ -579,6 +587,8 @@ public class HumanClient {
 		panelR4.setBackground(Color.white);
 		
 		 
+		 jlabelGold4.setFont(new Font("Verdana",1,20));
+		 panelR1.add(jlabelGold4);
 		 jlabelGold.setFont(new Font("Verdana",1,20));
 		 panelR.add(jlabelGold);
 		 jlabelGold2.setFont(new Font("Verdana",1,20));
@@ -587,13 +597,15 @@ public class HumanClient {
 		 panelR4.add(jlabelGold3);
 		 
 		//new GridBagConstraints(columnNumber, rowNumber, columnSpan, rowSpan, columnWeigth, rowWeigth, alignment, fillType, insets, padX, pady)
-		midPanelR.add(panelR,  new GridBagConstraints(0, 0, 1, 1, 0.3, 0.2, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+		midPanelR.add(panelR,  new GridBagConstraints(0, 1, 1, 1, 0.3, 0.15, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
                 2, 2), 0, 0));
-		midPanelR.add(panelR2,  new GridBagConstraints(0, 1, 1, 1, 0.7, 0.2, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+		midPanelR.add(panelR2,  new GridBagConstraints(0, 2, 1, 1, 0.7, 0.15, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
                 2, 2), 0, 0));
-		midPanelR.add(panelR4,  new GridBagConstraints(0, 2, 1, 1, 0.5, 0.2, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+		midPanelR.add(panelR4,  new GridBagConstraints(0, 3, 1, 1, 0.5, 0.15, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
                 2, 2), 0, 0));
-		midPanelR.add(panelR3,  new GridBagConstraints(0, 3, 1, 1, 0.5, 0.4, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+		midPanelR.add(panelR3,  new GridBagConstraints(0, 4, 1, 1, 0.5, 0.45, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
+                2, 2), 0, 0));
+		midPanelR.add(panelR1,  new GridBagConstraints(0, 0, 1, 1, 0.3, 0.15, GridBagConstraints.WEST, GridBagConstraints.BOTH, new Insets(2, 2,
                 2, 2), 0, 0));
 	    
 	    

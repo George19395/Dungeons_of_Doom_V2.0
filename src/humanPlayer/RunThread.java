@@ -43,6 +43,12 @@ public class RunThread extends Thread{
 					System.exit(0);
 				}
 				String[] as= output.trim().split(" ");
+				if(as[0].equals("GAMECODE")) {
+					System.out.println("Output" + as[1]);
+
+					humanClient.jlabelGold4.removeAll();
+					humanClient.jlabelGold4.setText("Game Code:"+as[1]);
+				}
 				if(as[0].equals("GAMEOVER")) {
 					System.out.println("Output" + as[0]);
 
