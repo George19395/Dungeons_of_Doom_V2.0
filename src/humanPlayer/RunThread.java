@@ -64,7 +64,7 @@ public class RunThread extends Thread{
 				}
 				if(as[0].equals("LOOK"))
 				{
-					System.out.println("I AM STUPID");
+//					System.out.println("I AM STUPID");
 					humanClient.updateLook(as[1]);
 
 				}
