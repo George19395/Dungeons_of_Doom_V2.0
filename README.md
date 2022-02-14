@@ -6,3 +6,6 @@ The server side of the application no longer displays the GODS_EYE map which was
   that many games can be created in this version which players can use the code of the game to join their friends game globally.
   The game was hosted by me as a test on an AWS_EC2 machine and friends from around the world were able to join and test it out with me as it was packaged and dispatched as an exe.
   2 exe files where produced. One for the server and one which is the game players actually run.
+  
+  REQUIREMENTS:
+  1. JAVA 8 which is packaged into the .exe produced.
